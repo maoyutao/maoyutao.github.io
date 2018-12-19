@@ -76,7 +76,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -88,6 +88,14 @@
       <ul>
         
           <li>
+            <a href="/2018/12/19/编译原理复习笔记/">编译原理复习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/18/软件工程复习笔记/">软件工程复习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/09/mekefile/">mekefile</a>
           </li>
         
@@ -97,10 +105,6 @@
         
           <li>
             <a href="/2018/10/20/web开发测试工具/">web开发测试工具</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/20/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -145,6 +149,372 @@
         
         <section id="main">
   
+    <article id="post-编译原理复习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/19/编译原理复习笔记/" class="article-date">
+  <time datetime="2018-12-19T05:34:30.000Z" itemprop="datePublished">2018-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/19/编译原理复习笔记/">编译原理复习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="形式语言基础"><a href="#形式语言基础" class="headerlink" title="形式语言基础"></a>形式语言基础</h1><h3 id="四类文法"><a href="#四类文法" class="headerlink" title="四类文法"></a>四类文法</h3><ul>
+<li>0型文法<ul>
+<li>对任一产生式α→β，都有α∈(VN∪VT)+， β∈(VN∪VT)</li>
+<li>形式语言谱系中最大的文法类</li>
+<li>能力相当于图灵机</li>
+<li>可以表征任何递归可枚举集</li>
+</ul>
+</li>
+<li>1型文法<ul>
+<li>对任一产生式α→β，都有|β|≥|α|， 仅仅 S→ε除外</li>
+<li>上下文有关文法</li>
+<li>其识别系统是非确定型线性有界自动机</li>
+</ul>
+</li>
+<li>2型文法<ul>
+<li>对任一产生式α→β，都有α∈VN</li>
+<li>上下文无关文法</li>
+<li>其识别系统是不确定的下推自动机</li>
+</ul>
+</li>
+<li>3型文法<ul>
+<li>任一产生式α→β的形式都为A→aB或A→a，其中A∈VN ， B∈VN ，a∈VT </li>
+<li>正则文法</li>
+<li>右线性文法/左线性文法</li>
+<li>产生的语言是有穷自动机(FA)所接受的集合</li>
+</ul>
+</li>
+</ul>
+<h3 id="二义性"><a href="#二义性" class="headerlink" title="二义性"></a>二义性</h3><p>文法的二义性和语言的二义性是两个不同的概念。</p>
+<ul>
+<li>若一个文法存在某个句子对应两棵不同的语法树，则称这个文法是二义的，或者，若一个文法存在某个句子有两个不同的最左(右)推导，则称这个文法是二义的。</li>
+<li>如果产生上下文无关语言的每一个文法都是二义的，则说此语言是先天二义的。</li>
+</ul>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><h3 id="词法分析"><a href="#词法分析" class="headerlink" title="词法分析"></a>词法分析</h3><p>基础概念</p>
+<ul>
+<li>A token (词法单元/记号) is a classification of lexical units<ul>
+<li>a pair consisting of<ul>
+<li>a token name (词法单元名)</li>
+<li>an optional attribute value (可选属性值)</li>
+</ul>
+</li>
+<li>token names: id and num</li>
+</ul>
+</li>
+<li>Lexemes (词素) are the specific character strings that make up a token<ul>
+<li>For example: abc and 123</li>
+</ul>
+</li>
+<li>Patterns (模式) are rules describing the set of lexemes belonging to a token<ul>
+<li>For example: “letter followed by letters and digits” and “non- empty sequence of digits”</li>
+</ul>
+</li>
+</ul>
+<p>token识别</p>
+<ul>
+<li>Transition Diagrams (TD) are used to represent the tokens</li>
+<li>As characters are read, the relevant TDs are used to attempt to match lexeme to a pattern</li>
+<li>Each TD has:<ul>
+<li>States : Represented by Circles</li>
+<li>Actions : Represented by Arrows between states</li>
+<li>Start State : Beginning of a pattern (Arrowhead)</li>
+<li>Final State(s) : End of pattern (Concentric Circles)</li>
+</ul>
+</li>
+</ul>
+<p>TD表的优化</p>
+<p>将状态和输入字符分类 以实现压缩转换表</p>
+<h1 id="语法分析"><a href="#语法分析" class="headerlink" title="语法分析"></a>语法分析</h1><p>语法分析程序(Parser)的作用</p>
+<ul>
+<li>分析源程序的单词流是否符合语言的语法规则</li>
+<li>报告语法错误</li>
+<li>产生源程序的语法分析结果，以语法分析树或与之等价的形式体现出来</li>
+</ul>
+<h2 id="自顶向下"><a href="#自顶向下" class="headerlink" title="自顶向下"></a>自顶向下</h2><p>自顶向下分析思想</p>
+<ul>
+<li>从文法开始符号出发进行推导;每一步推导都获得文法的一个句型;直到产生出一个句 子，恰好是所期望的终结符串</li>
+<li>每一步推导是对当前句型中剩余的某个非终 结符进行扩展，即用该非终结符的一个产生 式的右部替换该非终结符</li>
+<li>如果不存在任何一个可以产生出所期望的终 结符串的推导，则表明存在语法错误</li>
+</ul>
+<p>确定的自顶向下分析</p>
+<ul>
+<li>非终结符选择和产生式选择都是确定的<br>在每一步推导中，总是对最左边的非终结符<br>进行展开，且选择哪一个产生式是确定的，<br>因此是一种无回溯的方法</li>
+<li>从左向右扫描，可能向前查看(lookahead) 确定数目的单词</li>
+<li>分析成功的结果:得到唯一的最左推导 </li>
+<li>分析条件:对文法需要有一定的限制（要求文法不含左递归、左公因子）</li>
+</ul>
+<p>LL（1）</p>
+<ul>
+<li>第一个“L”, 代表从左(Left)向右扫描单词</li>
+<li>第二个“L”,代表产生的是最左(Leftmost) 推导</li>
+<li>“1”代表向前查看(lookahead)一个单词</li>
+</ul>
+<p>许多文法在消除左递归和提取左公因 子后可以变换为LL(1)文法, 但不含左递归和左公因子的文法一定是LL(1)文法</p>
+<p><img src="编译imgs/1.png" alt=""><br><img src="编译imgs/2.png" alt=""><br><img src="编译imgs/3.png" alt=""><br><img src="编译imgs/4.png" alt=""><br><img src="编译imgs/5.png" alt=""><br><img src="编译imgs/6.png" alt=""><br><img src="编译imgs/7.png" alt=""><br><img src="编译imgs/8.png" alt=""><br><img src="编译imgs/9.png" alt=""><br><img src="编译imgs/10.png" alt=""><br><img src="编译imgs/11.png" alt=""><br><img src="编译imgs/12.png" alt=""><br><img src="编译imgs/13.png" alt=""><br><img src="编译imgs/14.png" alt=""><br><img src="编译imgs/15.png" alt=""><br><img src="编译imgs/16.png" alt=""></p>
+<h2 id="自底向上"><a href="#自底向上" class="headerlink" title="自底向上"></a>自底向上</h2><p>自底向上分析中的确定化</p>
+<ul>
+<li>最左归约(目标，唯一性/确定化)</li>
+<li>等价于最右推导(保证了唯一性)</li>
+<li>分析栈 + 输入串(实现手段:移进-归约分析)</li>
+</ul>
+<p>与自顶向下技术相比 </p>
+<ul>
+<li><p>功能较强大</p>
+<p>  原因在于推导和归约过程有如下差别:推导时仅观察 可推导出的输入串的一部分，而归约时可归约的输入 串整体已全部出现</p>
+</li>
+<li><p>构造较复杂 </p>
+<p>  不适合手工构造<br>但存在很好的自动构造技术</p>
+</li>
+</ul>
+<p>移进 归约分析</p>
+<p><img src="编译imgs/18.png" alt=""></p>
+<ul>
+<li>对应一个最右推导</li>
+<li>句柄：栈顶形成;有效识别</li>
+<li>成功的归约对应一个最右推导， 因此每一步归约的串必定是一 个句柄</li>
+<li>两类冲突<ul>
+<li>移进 归约(shift-reduce)冲突</li>
+<li>归约 归约(reduce-reduce)冲突</li>
+</ul>
+</li>
+</ul>
+<p><img src="编译imgs/17.png" alt=""></p>
+<p>LR分析</p>
+<ul>
+<li>“L”, 代表从 左(Left)向右扫描输入单词序列</li>
+<li>“R”,代表 产生的是最右(Rightmost) 推导</li>
+</ul>
+<p><img src="编译imgs/19.png" alt=""><br><img src="编译imgs/20.png" alt=""></p>
+<p>LR（0）</p>
+<p><img src="编译imgs/21.png" alt=""><br><img src="编译imgs/22.png" alt=""><br><img src="编译imgs/23.png" alt=""><br><img src="编译imgs/24.png" alt=""><br><img src="编译imgs/25.png" alt=""><br><img src="编译imgs/26.png" alt=""><br><img src="编译imgs/27.png" alt=""><br><img src="编译imgs/28.png" alt=""><br><img src="编译imgs/29.png" alt=""></p>
+<p>SLR（1）</p>
+<p><img src="编译imgs/30.png" alt=""><br><img src="编译imgs/31.png" alt=""><br><img src="编译imgs/32.png" alt=""><br><img src="编译imgs/33.png" alt=""><br><img src="编译imgs/34.png" alt=""><br><img src="编译imgs/35.png" alt=""></p>
+<p>LR（1）<br><img src="编译imgs/36.png" alt=""><br><img src="编译imgs/37.png" alt=""><br><img src="编译imgs/38.png" alt=""><br><img src="编译imgs/39.png" alt=""><br><img src="编译imgs/40.png" alt=""><br><img src="编译imgs/41.png" alt=""><br><img src="编译imgs/42.png" alt=""></p>
+<p>LALR(1)分析</p>
+<p><img src="编译imgs/43.png" alt=""><br><img src="编译imgs/44.png" alt=""><br><img src="编译imgs/45.png" alt=""><br><img src="编译imgs/46.png" alt=""><br><img src="编译imgs/47.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/19/编译原理复习笔记/" data-id="cjpv3tind0003br2di11h5pnj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-软件工程复习笔记" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/软件工程复习笔记/" class="article-date">
+  <time datetime="2018-12-18T10:33:37.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/18/软件工程复习笔记/">软件工程复习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="软件工程基础"><a href="#软件工程基础" class="headerlink" title="软件工程基础"></a>软件工程基础</h1><ul>
+<li>软件是由程序数据和文档构成的</li>
+<li>本质特性：软件具有复杂性、一致性、可变性和不可见性等固有的内在特性，这是造成软件开发困难的根本原因</li>
+<li>所谓的“工程”就是应用有关的科学知识和技术手段，通过有组织的群体协作活动，建造具有预期使用价值的人造产品的过程</li>
+<li>工程活动一般都具有以下共同的特征：<ul>
+<li>是大规模的设计和建造</li>
+<li>涉及到复杂的问题和目标分解</li>
+<li>需要团队的协作和过程的控制</li>
+</ul>
+</li>
+<li>过程、方法和工具是软件工程的三个基本要素</li>
+<li>1968年，北大西洋公约组织(NATO)召开国际会议， 提出“软件工程”概念和术语。</li>
+</ul>
+<h1 id="生命周期模型"><a href="#生命周期模型" class="headerlink" title="生命周期模型"></a>生命周期模型</h1><ul>
+<li>瀑布模型</li>
+<li>原型化模型</li>
+<li>迭代式开发<ul>
+<li>增量模型:在每一个新的发布中逐步增加功能直到构造全部功能。</li>
+<li>迭代模型:一开始提交一个完整系统，在后续发布中补充完善各子系统功能。</li>
+</ul>
+</li>
+<li>可转换模型：自动化手段 特别适合于那些对安全性、可靠性和保密性要求极高的 软件系统，这些系统需要在投入运行前进行验证</li>
+</ul>
+<p>敏捷开发方法是一组轻量级开发方法的总称，包含很多具体的开发过程和方法， 最有影响的两个方法是极限编程(XP)和Scrum开发方法。Scrum偏重项目管理 XP偏重编程实践。</p>
+<h1 id="Scrum"><a href="#Scrum" class="headerlink" title="Scrum"></a>Scrum</h1><ul>
+<li>一个Sprint是一个1-4周的迭代，它是一个时间盒。</li>
+<li>Sprint的长度一旦确定，将保持不变。</li>
+<li>Sprint的产出是“完成”的、可用的、潜在可发布的产品增量。</li>
+<li>需求在一个Sprint内是不允许变化的</li>
+<li>自组织团队是敏捷软件开发的基本观念，即团队被授权自己管理他们的工作过程 和进度，并且团队决定如何完成工作。</li>
+</ul>
+<p>角色：</p>
+<ul>
+<li>产品负责人<ul>
+<li>定义产品需求</li>
+<li>确定产品发布计划 </li>
+<li>对产品收益负责</li>
+<li>确定需求优先级</li>
+<li>调整需求和优先级 </li>
+<li>验收迭代结果</li>
+</ul>
+</li>
+<li>Scrum主管<ul>
+<li>直接管理项目</li>
+<li>帮助团队制定冲刺计划</li>
+<li>组织每日站立会议</li>
+<li>引导团队正确应用敏捷实践 </li>
+<li>确保团队功能完备富有效率 </li>
+<li>促进团队紧密协作</li>
+<li>排除团队遇到的障碍</li>
+<li>保护团队不受打扰</li>
+</ul>
+</li>
+<li>团队<ul>
+<li>一般是5-9人</li>
+<li>团队是跨职能的</li>
+<li>成员都全职工作</li>
+<li>自我组织和管理</li>
+<li>合作完成冲刺开发工作 </li>
+<li>保证每一次冲刺的成功</li>
+</ul>
+</li>
+</ul>
+<p>制品</p>
+<ul>
+<li><p>产品订单</p>
+<ul>
+<li>是从客户价值角度理解的产品功能列表。 </li>
+<li>功能、缺陷、增强等都可以是产品订单项</li>
+<li>整体上从客户价值进行优先级排序</li>
+</ul>
+</li>
+<li><p>迭代订单</p>
+<ul>
+<li>是从开发技术角度理解的迭代开发任务。</li>
+<li>简单环境:可直接把产品订单项分配到迭代中</li>
+<li>复杂环境:可把一个产品订单项分为Web/后台……软件/硬件……程序/美工……等开发任务</li>
+</ul>
+</li>
+<li><p>可工作软件</p>
+<ul>
+<li>是可交付的软件产品。</li>
+<li>“可交付”应视不同情况提前设定和选定交付标准。</li>
+<li>正式产品可能包括使用文档，在新产品开发初期可能只需要交付勉强看到效果的产品。</li>
+</ul>
+</li>
+<li><p>燃尽图</p>
+<ul>
+<li>以图形化方式展现了剩余工作量(Y轴)与时间(X轴)的关系。</li>
+</ul>
+</li>
+</ul>
+<p>活动</p>
+<ul>
+<li>迭代计划会议 Sprint Planning</li>
+<li>每日站立会议 Daily Scrum Meeting</li>
+<li>迭代评审会议 Sprint Review</li>
+<li>迭代回顾会议 Sprint Retrospective</li>
+</ul>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>驱动模块：在大多数场合称为“主程序”，它接收测试数据并将这些数据传送到被测试模块，单元测试一个函数单元时，被测单元本身是不能独立运行的，需要为其传送数据，为此写驱动</p>
+<p>驱动模块要完成以下事情：</p>
+<p>1.接受测试输入</p>
+<p>2.对输入进行判断</p>
+<p>3.将输入传给被测单元，驱动被测单元执行</p>
+<p>4.接受被测单元执行结果，并对结果进行判断</p>
+<p>5.将判断结果作为用例执行结果输出测试报告</p>
+<p>桩模块：比如对函数A做单元测试时，被测的函数单元下还包括了一个函数B，为了更好的测试错误，定位错误，就要为函数B写桩，来模拟函数B的功能，保证其正确。</p>
+<h1 id="用户故事"><a href="#用户故事" class="headerlink" title="用户故事"></a>用户故事</h1><p> 格式:作为一个&lt;角色&gt;，可以&lt;活动&gt;，以便于&lt;价值&gt;。</p>
+<ul>
+<li>独立性:尽可能避免故事之间存在依赖关系，否则会产生优先级和规划问题。 </li>
+<li>可协商:故事是可协商的，不是必须实现的书面合同或者需求。</li>
+<li>有价值:确保每个故事对客户或者用户有价值的，最好是让用户编写故事。</li>
+<li>可估算:开发者应该能够预测故事的规模，以及编码实现所需要的时间。</li>
+<li>短小的:故事尽量短小，最好不超过10个理想人天，至少在一个迭代中完成。 </li>
+<li>可测试:所编写的故事必须是可测试的。</li>
+</ul>
+<p>故事点：它是一个相对度量单位。使用时，可以给每个故事分配一个 点值;点值本身并不重要，重要的是点值的相对大小。</p>
+<p>理想时间：它是一个绝对度量单位。理想时间是某件事在剔除所有外围 活动以后所需的时间;一般为一天有效工作时间的 60-80% 比较合理，但绝不会是全部。</p>
+<h1 id="软件配置管理"><a href="#软件配置管理" class="headerlink" title="软件配置管理"></a>软件配置管理</h1><p>基线(Baseline)是软件配置项的一个稳定版本，它是进一步开发的基础， 只有通过正式的变更控制过程才能改变。</p>
+<p>软件配置项(Software Configuration Item，简称SCI)是为了配置管理而作为 单独实体处理的一个工作产品或软件。</p>
+<ul>
+<li>文档数据</li>
+<li>相关产品</li>
+<li>源代码</li>
+</ul>
+<h1 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h1><ol>
+<li><p>下面的（E）是软件构造活动的任务。 </p>
+<p> A.构建软件组件 </p>
+<p> B.设计用户界面 </p>
+<p> C.实施组件的单元测试 </p>
+<p> D.评估组件的质量 </p>
+<p> E.选项A和C  </p>
+<p> F.选项A、B、C和D </p>
+</li>
+</ol>
+<ol start="2">
+<li><p>在攻克技术难题时，最佳的开发团队组织模型是（A）。 </p>
+<p> A. 民主式结构 B. 主程序员式结构 C. 矩阵式结构 D. 以上所有选项都不是 </p>
+</li>
+</ol>
+<ol start="3">
+<li><p>下面的（ D）是正确的。</p>
+<p> A.    故事点是一个绝对度量单位 </p>
+<p> B.    故事点估算一定要做到非常精确 </p>
+<p> C.    故事点表示开发一个用户故事或特性的复杂度 </p>
+<p> D.    故事点表示开发一个用户故事或特性所要付出的工作量 </p>
+</li>
+<li><p>下面的（ E）是有效的软件配置项。</p>
+<p> A.    软件工具 B.    文档 C.    可执行程序 D.    测试数据 E. 以上所有选项</p>
+</li>
+<li><p>在敏捷开发方法中，用户故事（User Story）的作用是（F ）。</p>
+<p> A.    定义需要发布给最终用户的软件特性和功能 </p>
+<p> B.    确定发布每一次增量的日程表 </p>
+<p> C.    用于代替详细的活动计划 </p>
+<p> D.    用于估算构建当前增量所需要的努力 </p>
+<p> E.    选项A和C </p>
+<p> F.    选项A和D</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/18/软件工程复习笔记/" data-id="cjpv3tink0006br2d3p9bn9dw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mekefile" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/09/mekefile/" class="article-date">
@@ -173,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/mekefile/" data-id="cjpgxbbmx0002xc2dhperqpj0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/mekefile/" data-id="cjpv3tin80001br2du4896hqs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,6 +580,8 @@
 <p><a href="https://maoyutao.github.io/gitcommand/" target="_blank" rel="noopener">git command</a></p>
 <p><a href="https://github.com/scutan90/DeepLearning-500-questions" target="_blank" rel="noopener">深度学习500问</a></p>
 <p><a href="http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html" target="_blank" rel="noopener">travis CI</a></p>
+<p><a href="https://blog.csdn.net/gui951753/article/details/79210535" target="_blank" rel="noopener">IP地址知识</a></p>
+<p><a href="https://blog.csdn.net/gui951753/article/details/79412524" target="_blank" rel="noopener">子网划分</a></p>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p><a href="https://docs.djangoproject.com/zh-hans/2.1/" target="_blank" rel="noopener">django</a></p>
 <p><a href="http://doc.qt.io/qt-5/classes.html" target="_blank" rel="noopener">qt</a></p>
 <p><a href="https://www.css88.com/nav/" target="_blank" rel="noopener">前端文档和工具</a></p>
@@ -217,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/教程集锦/" data-id="cjpgxbbmz0003xc2d0uonf3u3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/教程集锦/" data-id="cjpv3tini0005br2dbt1uaspq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/20/web开发测试工具/" data-id="cjpgxbbn20004xc2dkphqr5zo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/20/web开发测试工具/" data-id="cjpv3tina0002br2d8e7mz1wh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jmeter/">jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/travisCI/">travisCI</a></li></ul>
@@ -350,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/20/hello-world/" data-id="cjpgxbbmq0000xc2dm11g0q1a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/20/hello-world/" data-id="cjpv3tin10000br2dcnj0gc1b" class="article-share-link">Share</a>
       
       
     </footer>
