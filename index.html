@@ -264,7 +264,7 @@
 <li>“1”代表向前查看(lookahead)一个单词</li>
 </ul>
 <p>许多文法在消除左递归和提取左公因 子后可以变换为LL(1)文法, 但不含左递归和左公因子的文法一定是LL(1)文法</p>
-<p><img src="编译imgs/1.png" alt=""><br><img src="编译imgs/2.png" alt=""><br><img src="编译imgs/3.png" alt=""><br><img src="编译imgs/4.png" alt=""><br><img src="编译imgs/5.png" alt=""><br><img src="编译imgs/6.png" alt=""><br><img src="编译imgs/7.png" alt=""><br><img src="编译imgs/8.png" alt=""><br><img src="编译imgs/9.png" alt=""><br><img src="编译imgs/10.png" alt=""><br><img src="编译imgs/11.png" alt=""><br><img src="编译imgs/12.png" alt=""><br><img src="编译imgs/13.png" alt=""><br><img src="编译imgs/14.png" alt=""><br><img src="编译imgs/15.png" alt=""><br><img src="编译imgs/16.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/1.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/2.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/3.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/4.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/5.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/6.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/7.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/8.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/9.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/10.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/11.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/12.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/13.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/14.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/15.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/16.png" alt=""></p>
 <h2 id="自底向上"><a href="#自底向上" class="headerlink" title="自底向上"></a>自底向上</h2><p>自底向上分析中的确定化</p>
 <ul>
 <li>最左归约(目标，唯一性/确定化)</li>
@@ -281,7 +281,7 @@
 </li>
 </ul>
 <p>移进 归约分析</p>
-<p><img src="编译imgs/18.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/18.png" alt=""></p>
 <ul>
 <li>对应一个最右推导</li>
 <li>句柄：栈顶形成;有效识别</li>
@@ -292,25 +292,25 @@
 </ul>
 </li>
 </ul>
-<p><img src="编译imgs/17.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/17.png" alt=""></p>
 <p>LR分析</p>
 <ul>
 <li>“L”, 代表从 左(Left)向右扫描输入单词序列</li>
 <li>“R”,代表 产生的是最右(Rightmost) 推导</li>
 </ul>
-<p><img src="编译imgs/19.png" alt=""><br><img src="编译imgs/20.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/19.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/20.png" alt=""></p>
 <p>LR（0）</p>
-<p><img src="编译imgs/21.png" alt=""><br><img src="编译imgs/22.png" alt=""><br><img src="编译imgs/23.png" alt=""><br><img src="编译imgs/24.png" alt=""><br><img src="编译imgs/25.png" alt=""><br><img src="编译imgs/26.png" alt=""><br><img src="编译imgs/27.png" alt=""><br><img src="编译imgs/28.png" alt=""><br><img src="编译imgs/29.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/21.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/22.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/23.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/24.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/25.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/26.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/27.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/28.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/29.png" alt=""></p>
 <p>SLR（1）</p>
-<p><img src="编译imgs/30.png" alt=""><br><img src="编译imgs/31.png" alt=""><br><img src="编译imgs/32.png" alt=""><br><img src="编译imgs/33.png" alt=""><br><img src="编译imgs/34.png" alt=""><br><img src="编译imgs/35.png" alt=""></p>
-<p>LR（1）<br><img src="编译imgs/36.png" alt=""><br><img src="编译imgs/37.png" alt=""><br><img src="编译imgs/38.png" alt=""><br><img src="编译imgs/39.png" alt=""><br><img src="编译imgs/40.png" alt=""><br><img src="编译imgs/41.png" alt=""><br><img src="编译imgs/42.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/30.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/31.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/32.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/33.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/34.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/35.png" alt=""></p>
+<p>LR（1）<br><img src="/2018/12/19/编译原理复习笔记/编译imgs/36.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/37.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/38.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/39.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/40.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/41.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/42.png" alt=""></p>
 <p>LALR(1)分析</p>
-<p><img src="编译imgs/43.png" alt=""><br><img src="编译imgs/44.png" alt=""><br><img src="编译imgs/45.png" alt=""><br><img src="编译imgs/46.png" alt=""><br><img src="编译imgs/47.png" alt=""></p>
+<p><img src="/2018/12/19/编译原理复习笔记/编译imgs/43.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/44.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/45.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/46.png" alt=""><br><img src="/2018/12/19/编译原理复习笔记/编译imgs/47.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/19/编译原理复习笔记/" data-id="cjpv3tind0003br2di11h5pnj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/19/编译原理复习笔记/" data-id="cjpv46e4i0004ew2dsfq35nxl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/18/软件工程复习笔记/" data-id="cjpv3tink0006br2d3p9bn9dw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/18/软件工程复习笔记/" data-id="cjpv46e4u0007ew2dizo9o1zq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -543,7 +543,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/mekefile/" data-id="cjpv3tin80001br2du4896hqs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/mekefile/" data-id="cjpv46e4e0002ew2dlrvlxigd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/教程集锦/" data-id="cjpv3tini0005br2dbt1uaspq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/教程集锦/" data-id="cjpv46e4q0006ew2dmbx56o9u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -675,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/20/web开发测试工具/" data-id="cjpv3tina0002br2d8e7mz1wh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/20/web开发测试工具/" data-id="cjpv46e4h0003ew2d5r6zkkat" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jmeter/">jmeter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postman/">postman</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/travisCI/">travisCI</a></li></ul>
@@ -722,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/20/hello-world/" data-id="cjpv3tin10000br2dcnj0gc1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/20/hello-world/" data-id="cjpv46e450000ew2dmsxds1k5" class="article-share-link">Share</a>
       
       
     </footer>
